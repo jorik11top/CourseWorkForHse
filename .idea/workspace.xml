@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07446e65-dc90-480a-a7dc-6401d31ee740" name="Changes" comment="version test 02">
+    <list default="true" id="07446e65-dc90-480a-a7dc-6401d31ee740" name="Changes" comment="version test 03">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Waste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Waste.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +67,7 @@
       <workItem from="1681662633429" duration="105000" />
       <workItem from="1682530297450" duration="32000" />
       <workItem from="1683143299223" duration="2619000" />
-      <workItem from="1683145975331" duration="2791000" />
+      <workItem from="1683145975331" duration="3887000" />
     </task>
     <task id="LOCAL-00001" summary="version test 02">
       <created>1679590650379</created>
@@ -83,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679590667714</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="version test 03">
+      <created>1683150106119</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683150106119</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +109,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="version test 02" />
-    <option name="LAST_COMMIT_MESSAGE" value="version test 02" />
+    <MESSAGE value="version test 03" />
+    <option name="LAST_COMMIT_MESSAGE" value="version test 03" />
   </component>
 </project>
