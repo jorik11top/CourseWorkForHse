@@ -10,9 +10,10 @@ public class User {
     private final LocalDate brithDate;
     private final String login;
     private final String password;
-    private static int id;
+    private final String email;
 
-    public User(String name, String surname, String patronymic, String gender, LocalDate brithDate, String login, String password){
+
+    public User(String name, String surname, String patronymic, String gender, LocalDate brithDate, String login, String password, String email){
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -20,6 +21,7 @@ public class User {
         this.brithDate = brithDate;
         this.login = login;
         this.password = password;
+        this.email = email;
     }
 
     public String getName() {
@@ -36,5 +38,21 @@ public class User {
 
     public String getPatronymic() {
         return patronymic;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getLogin() {
+        return login;
     }
 }
