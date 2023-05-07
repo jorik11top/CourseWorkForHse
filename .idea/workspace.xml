@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07446e65-dc90-480a-a7dc-6401d31ee740" name="Changes" comment="version test 04">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_33.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataBase/ConfigsDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataBase/Const.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataBase/DataBaseConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataBase/ConstWaste.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CourseWorkForHse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CourseWorkForHse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataBase/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataBase/ConstUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataBase/DataBaseConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataBase/DataBaseConnect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/UserRegistration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Waste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Waste.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +80,7 @@
       <workItem from="1683196453819" duration="270000" />
       <workItem from="1683270247361" duration="2470000" />
       <workItem from="1683386215529" duration="5936000" />
-      <workItem from="1683394616373" duration="10624000" />
+      <workItem from="1683394616373" duration="20534000" />
     </task>
     <task id="LOCAL-00001" summary="version test 02">
       <created>1679590650379</created>
@@ -114,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683195479110</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="version test 04">
+      <created>1683407149660</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683407149660</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

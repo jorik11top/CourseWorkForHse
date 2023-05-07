@@ -13,11 +13,16 @@ public class DataBaseConnect extends ConfigsDB {
         DBConnect = DriverManager.getConnection(connectSting,DBUser,DBPassword);
         return DBConnect;
     }
+    private boolean checkUser(User user) throws SQLException, ClassNotFoundException {
+        String check = "SELECT * FROM" + ConstUsers.USER_TABLE + "WHERE" +
+                "";
+        PreparedStatement res = getDBConnect().prepareStatement(check);
 
+    }
     public void signUpUser(User user) throws SQLException, ClassNotFoundException {
-        String insert = "INSERT INTO " + Const.USER_TABLE + "(" +
-                Const.USERS_NAME +","+ Const.USERS_SURNAME +","+ Const.USERS_PATRONYMIC +","+ Const.USERS_BRITHDATE +","+ Const.USERS_GENDER
-                +","+ Const.USERS_LOGIN +","+ Const.USERS_PASSWORD +","+ Const.USERS_EMAIL +")" +
+        String insert = "INSERT INTO " + ConstUsers.USER_TABLE + "(" +
+                ConstUsers.USERS_NAME +","+ ConstUsers.USERS_SURNAME +","+ ConstUsers.USERS_PATRONYMIC +","+ ConstUsers.USERS_BRITHDATE +","+ ConstUsers.USERS_GENDER
+                +","+ ConstUsers.USERS_LOGIN +","+ ConstUsers.USERS_PASSWORD +","+ ConstUsers.USERS_EMAIL +")" +
                 "VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement pST = getDBConnect().prepareStatement(insert);
         pST.setString(1,user.getName());
@@ -29,7 +34,7 @@ public class DataBaseConnect extends ConfigsDB {
         pST.setString(7,user.getPassword());
         pST.setString(8,user.getEmail());
         pST.executeUpdate();
-
     }
+
 
 }

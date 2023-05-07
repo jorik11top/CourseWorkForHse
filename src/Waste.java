@@ -1,10 +1,10 @@
 import java.time.LocalDate;
 
 public class Waste {
-    private final int sum;
-    private final String name;
-    private final String type;
-    private final LocalDate date;
+    private int sum;
+    private String name;
+    private String type;
+    private LocalDate date;
 
     public Waste(int sum, String name, String type){
         this.sum = sum;
@@ -24,8 +24,10 @@ public class Waste {
     public String getType() {
         return type;
     }
-    public LocalDate date(){
+    public LocalDate getDate(){
         return date;
     }
-
+    public void setName(String name){
+        this.name = name;
+    }
 }
