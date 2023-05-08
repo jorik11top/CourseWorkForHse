@@ -24,6 +24,22 @@ public class User {
         this.email = email;
     }
 
+    public User() {
+
+    }
+
+    public User NullUser(){
+        this.name = null;
+        this.surname = null;
+        this.patronymic = null;
+        this.gender = null;
+        this.brithDate = null;
+        this.login = null;
+        this.password = null;
+        this.email = null;
+        return this;
+    }
+
     public String getName() {
         return name;
     }

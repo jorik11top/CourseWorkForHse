@@ -1,3 +1,5 @@
+package Users;
+
 import java.time.LocalDate;
 
 public class Waste {
@@ -29,5 +31,17 @@ public class Waste {
     }
     public void setName(String name){
         this.name = name;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

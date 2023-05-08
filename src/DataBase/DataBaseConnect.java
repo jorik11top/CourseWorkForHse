@@ -1,39 +1,116 @@
 package DataBase;
-import Users.User;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import Users.*;
+
+import java.sql.*;
+import java.util.Calendar;
 
 public class DataBaseConnect extends ConfigsDB {
     Connection DBConnect;
-
+    /**
+     * Метод который создаёт коннект с базой данных
+     *
+    */
     public Connection getDBConnect() throws ClassNotFoundException, SQLException{
         String connectSting = "jdbc:mysql://" + DBHost + ":" + DBPort + "/" + DBName;
         DBConnect = DriverManager.getConnection(connectSting,DBUser,DBPassword);
         return DBConnect;
     }
-    private boolean checkUser(User user) throws SQLException, ClassNotFoundException {
-        String check = "SELECT * FROM" + ConstUsers.USER_TABLE + "WHERE" +
-                "";
-        PreparedStatement res = getDBConnect().prepareStatement(check);
 
+
+
+    public boolean checkUser(User user) throws SQLException, ClassNotFoundException {
+        String check = "SELECT * FROM " + ConstUsers.USER_TABLE + " WHERE " +
+                ConstUsers.USERS_LOGIN + "=? OR " + ConstUsers.USERS_EMAIL + "=?" ;
+        ResultSet res = null;
+        PreparedStatement sel = getDBConnect().prepareStatement(check);
+        sel.setString(1,user.getLogin());
+        sel.setString(2,user.getEmail());
+        res = sel.executeQuery();
+        int count = 0;
+        while (res.next()){
+            count++;
+        }
+        if(count == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
-    public void signUpUser(User user) throws SQLException, ClassNotFoundException {
-        String insert = "INSERT INTO " + ConstUsers.USER_TABLE + "(" +
-                ConstUsers.USERS_NAME +","+ ConstUsers.USERS_SURNAME +","+ ConstUsers.USERS_PATRONYMIC +","+ ConstUsers.USERS_BRITHDATE +","+ ConstUsers.USERS_GENDER
-                +","+ ConstUsers.USERS_LOGIN +","+ ConstUsers.USERS_PASSWORD +","+ ConstUsers.USERS_EMAIL +")" +
-                "VALUES(?,?,?,?,?,?,?,?)";
-        PreparedStatement pST = getDBConnect().prepareStatement(insert);
-        pST.setString(1,user.getName());
-        pST.setString(2,user.getSurname());
-        pST.setString(3,user.getPatronymic());
-        pST.setString(4,user.getBrithDate().toString());
-        pST.setString(5,user.getGender());
-        pST.setString(6,user.getLogin());
-        pST.setString(7,user.getPassword());
-        pST.setString(8,user.getEmail());
-        pST.executeUpdate();
+
+    public User inputUser(User user) throws SQLException, ClassNotFoundException {
+        String select = "SELECT * FROM " + ConstUsers.USER_TABLE + " WHERE " +
+                ConstUsers.USERS_PASSWORD + "=? AND " + ConstUsers.USERS_LOGIN + "=?" ;
+        ResultSet res = null;
+        PreparedStatement sel = getDBConnect().prepareStatement(select);
+        sel.setString(1,user.getPassword());
+        sel.setString(2,user.getLogin());
+        res = sel.executeQuery();
+        int count = 0;
+        while (res.next()){
+            count++;
+            user.setName(res.getString(2));
+            user.setSurname(res.getString(3));
+            user.setPatronymic(res.getString(4));
+            user.setBrithDate(res.getDate(5).toLocalDate());
+            user.setLogin(res.getString(6));
+            user.setPassword(res.getString(7));
+            user.setGender(res.getString(8));
+            user.setEmail(res.getString(9));
+
+
+        }
+        if(count == 0){
+            System.out.println("Неправильно введёт логин или пароль");
+            return user.NullUser();
+        }
+        else{
+            System.out.println("Вы успешно авторизирвоались");
+            return user;
+        }
+    }
+
+    public boolean addUser(User user) throws SQLException, ClassNotFoundException {
+        boolean res = checkUser(user);
+        if(res == false){
+            String insert = "INSERT INTO " + ConstUsers.USER_TABLE + "(" +
+                    ConstUsers.USERS_NAME +","+ ConstUsers.USERS_SURNAME +","+ ConstUsers.USERS_PATRONYMIC +","+ ConstUsers.USERS_BRITHDATE +","+ ConstUsers.USERS_GENDER
+                    +","+ ConstUsers.USERS_LOGIN +","+ ConstUsers.USERS_PASSWORD +","+ ConstUsers.USERS_EMAIL +")" +
+                    "VALUES(?,?,?,?,?,?,?,?)";
+            PreparedStatement pST = getDBConnect().prepareStatement(insert);
+            pST.setString(1,user.getName());
+            pST.setString(2,user.getSurname());
+            pST.setString(3,user.getPatronymic());
+            pST.setDate(4,Date.valueOf(user.getBrithDate()));
+            pST.setString(5,user.getGender());
+            pST.setString(6,user.getLogin());
+            pST.setString(7,user.getPassword());
+            pST.setString(8,user.getEmail());
+            pST.executeUpdate();
+            System.out.println("Пользователь Добавлен");
+            return true;
+        }
+        else {
+            System.out.println("Пользователь с таким логином или почтой уже существует");
+            return false;
+        }
+    }
+    public void addWaste(User user,Waste waste) throws SQLException, ClassNotFoundException {
+        String insert = "INSERT INTO " + ConstWaste.WASTE_TABLE + "(" +
+                ConstWaste.WASTE_LOGIN +","+ ConstWaste.WASTE_NAME +","+ ConstWaste.WASTE_TYPE +","+ ConstWaste.WASTE_SUM +","+ ConstWaste.WASTE_DATE
+                +")" +
+                "VALUES(?,?,?,?,?)";
+        PreparedStatement added = getDBConnect().prepareStatement(insert);
+        System.out.println(waste.getDate());
+        added.setString(1,user.getLogin());
+        added.setString(2,waste.getName());
+        added.setString(3,waste.getType());
+        added.setInt(4,waste.getSum());
+
+        java.util.Date today = new java.util.Date();
+        Timestamp timestamp = new Timestamp(today.getTime());
+        added.setTimestamp (5, timestamp);
+        added.executeUpdate();
     }
 
 
