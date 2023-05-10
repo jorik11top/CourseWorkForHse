@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="ef867384-9a00-4939-9a1e-25d18b218513">
-      <console name="users" type="STANDARD" schema="users" session="Main"><![CDATA[select * from `waste`]]></console>
+      <console name="users" type="STANDARD" schema="users" session="Main"><![CDATA[select * from `users`]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

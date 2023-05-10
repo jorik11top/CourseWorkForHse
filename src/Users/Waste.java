@@ -1,18 +1,20 @@
 package Users;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Waste {
     private int sum;
     private String name;
     private String type;
-    private LocalDate date;
+    private Date date;
 
-    public Waste(int sum, String name, String type){
+
+    public Waste(int sum, String name, String type,Date date){
         this.sum = sum;
         this.name = name;
         this.type = type;
-        this.date = LocalDate.now();
+        this.date = date;
     }
 
     public int getSum() {
@@ -26,9 +28,6 @@ public class Waste {
     public String getType() {
         return type;
     }
-    public LocalDate getDate(){
-        return date;
-    }
     public void setName(String name){
         this.name = name;
     }
@@ -37,11 +36,12 @@ public class Waste {
         this.sum = sum;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
 }

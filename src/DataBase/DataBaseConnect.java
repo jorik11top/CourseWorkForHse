@@ -2,6 +2,7 @@ package DataBase;
 import Users.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DataBaseConnect extends ConfigsDB {
@@ -101,7 +102,6 @@ public class DataBaseConnect extends ConfigsDB {
                 +")" +
                 "VALUES(?,?,?,?,?)";
         PreparedStatement added = getDBConnect().prepareStatement(insert);
-        System.out.println(waste.getDate());
         added.setString(1,user.getLogin());
         added.setString(2,waste.getName());
         added.setString(3,waste.getType());
@@ -111,6 +111,18 @@ public class DataBaseConnect extends ConfigsDB {
         Timestamp timestamp = new Timestamp(today.getTime());
         added.setTimestamp (5, timestamp);
         added.executeUpdate();
+    }
+    public void getWaste(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
+        String select = "SELECT * FROM " + ConstWaste.WASTE_TABLE + " WHERE " +
+                ConstUsers.USERS_LOGIN + "=?";
+        ResultSet res = null;
+        PreparedStatement sel = getDBConnect().prepareStatement(select);
+        sel.setString(1,user.getLogin());
+        res = sel.executeQuery();
+        while (res.next()){
+            Waste waste = new Waste(res.getInt(3),res.getString(1),res.getString(2),res.getDate(4));
+            list.add(waste);
+        }
     }
 
 
