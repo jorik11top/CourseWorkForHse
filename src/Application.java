@@ -29,7 +29,7 @@ public class Application {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
         }
-//        connect.addWaste(user,new Waste(5000,"кроссовки adidas", list.get(5)));
+//        connect.addWaste(user,new Waste(2000,"spar", list.get(1)));
         ArrayList<Waste> list1 = new ArrayList<>();
         connect.getWasteAll(user,list1);
         for (int i = 0; i < list1.size(); i++) {

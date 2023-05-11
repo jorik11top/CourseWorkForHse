@@ -136,7 +136,7 @@ public class DataBaseConnect extends ConfigsDB {
         sel.setString(1,user.getLogin());
         res = sel.executeQuery();
         while (res.next()){
-            Waste waste = new Waste(res.getInt(3),res.getString(1),res.getString(2),res.getTimestamp(4));
+            Waste waste = new Waste(res.getInt(4),res.getString(2),res.getString(3),res.getTimestamp(5));
             list.add(waste);
         }
     }
