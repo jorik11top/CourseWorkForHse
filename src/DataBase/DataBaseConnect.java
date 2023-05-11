@@ -9,11 +9,12 @@ public class DataBaseConnect extends ConfigsDB {
     Connection DBConnect;
     /**
      * Метод который создаёт коннект с базой данных
-     *
+     * Параметры можно изменить в классе ConfigsDB
     */
     public Connection getDBConnect() throws ClassNotFoundException, SQLException{
         String connectSting = "jdbc:mysql://" + DBHost + ":" + DBPort + "/" + DBName;
         DBConnect = DriverManager.getConnection(connectSting,DBUser,DBPassword);
+
         return DBConnect;
     }
 
@@ -50,14 +51,14 @@ public class DataBaseConnect extends ConfigsDB {
         int count = 0;
         while (res.next()){
             count++;
-            user.setName(res.getString(2));
-            user.setSurname(res.getString(3));
-            user.setPatronymic(res.getString(4));
-            user.setBrithDate(res.getDate(5).toLocalDate());
-            user.setLogin(res.getString(6));
-            user.setPassword(res.getString(7));
-            user.setGender(res.getString(8));
-            user.setEmail(res.getString(9));
+            user.setName(res.getString(1));
+            user.setSurname(res.getString(2));
+            user.setPatronymic(res.getString(3));
+            user.setBrithDate(res.getDate(4).toLocalDate());
+            user.setLogin(res.getString(5));
+            user.setPassword(res.getString(6));
+            user.setGender(res.getString(7));
+            user.setEmail(res.getString(8));
 
 
         }
@@ -96,6 +97,21 @@ public class DataBaseConnect extends ConfigsDB {
             return false;
         }
     }
+
+
+
+
+    public ArrayList<String> selectType() throws SQLException, ClassNotFoundException {
+        String select =  "SELECT * FROM " + ConstTypeWaste.TYPE_WASTE_TABLE ;
+        PreparedStatement get = getDBConnect().prepareStatement(select);
+        ResultSet res = get.executeQuery();
+        ArrayList<String> list =  new ArrayList<>();
+        while (res.next()){
+            list.add(res.getString(1));
+        }
+        return list;
+    }
+
     public void addWaste(User user,Waste waste) throws SQLException, ClassNotFoundException {
         String insert = "INSERT INTO " + ConstWaste.WASTE_TABLE + "(" +
                 ConstWaste.WASTE_LOGIN +","+ ConstWaste.WASTE_NAME +","+ ConstWaste.WASTE_TYPE +","+ ConstWaste.WASTE_SUM +","+ ConstWaste.WASTE_DATE
@@ -112,7 +128,7 @@ public class DataBaseConnect extends ConfigsDB {
         added.setTimestamp (5, timestamp);
         added.executeUpdate();
     }
-    public void getWaste(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
+    public void getWasteAll(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
         String select = "SELECT * FROM " + ConstWaste.WASTE_TABLE + " WHERE " +
                 ConstUsers.USERS_LOGIN + "=?";
         ResultSet res = null;
@@ -120,7 +136,19 @@ public class DataBaseConnect extends ConfigsDB {
         sel.setString(1,user.getLogin());
         res = sel.executeQuery();
         while (res.next()){
-            Waste waste = new Waste(res.getInt(3),res.getString(1),res.getString(2),res.getDate(4));
+            Waste waste = new Waste(res.getInt(3),res.getString(1),res.getString(2),res.getTimestamp(4));
+            list.add(waste);
+        }
+    }
+    public void getWasteInterval(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
+        String select = "SELECT * FROM " + ConstWaste.WASTE_TABLE + " WHERE " +
+                ConstUsers.USERS_LOGIN + "=?" ;
+        ResultSet res = null;
+        PreparedStatement sel = getDBConnect().prepareStatement(select);
+        sel.setString(1,user.getLogin());
+        res = sel.executeQuery();
+        while (res.next()){
+            Waste waste = new Waste(res.getInt(3),res.getString(1),res.getString(2),res.getTimestamp(4));
             list.add(waste);
         }
     }

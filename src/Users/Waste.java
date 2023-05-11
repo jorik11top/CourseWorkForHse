@@ -1,16 +1,22 @@
 package Users;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class Waste {
     private int sum;
     private String name;
     private String type;
-    private Date date;
+    private Timestamp date;
 
 
-    public Waste(int sum, String name, String type,Date date){
+    public Waste(int sum, String name, String type){
+        this.sum = sum;
+        this.name = name;
+        this.type = type;
+    }
+    public Waste(int sum, String name, String type, Timestamp date){
         this.sum = sum;
         this.name = name;
         this.type = type;
@@ -36,7 +42,7 @@ public class Waste {
         this.sum = sum;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
