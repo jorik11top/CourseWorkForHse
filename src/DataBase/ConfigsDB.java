@@ -1,9 +1,9 @@
 package DataBase;
 
 public class ConfigsDB {
-    protected String DBHost = "178.76.255.225";
+    protected String DBHost = "sql7.freesqldatabase.com";
     protected String DBPort = "3306";
-    protected String DBUser = "jora";
-    protected String DBPassword = "jora";
-    protected String DBName = "users";
+    protected String DBUser = "sql7617691";
+    protected String DBPassword = "yB1gqVMyBY";
+    protected String DBName = "sql7617691";
 }

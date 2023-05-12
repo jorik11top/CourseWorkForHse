@@ -55,9 +55,9 @@ public class DataBaseConnect extends ConfigsDB {
             user.setSurname(res.getString(2));
             user.setPatronymic(res.getString(3));
             user.setBrithDate(res.getDate(4).toLocalDate());
-            user.setLogin(res.getString(5));
-            user.setPassword(res.getString(6));
-            user.setGender(res.getString(7));
+            user.setGender(res.getString(5));
+            user.setLogin(res.getString(6));
+            user.setPassword(res.getString(7));
             user.setEmail(res.getString(8));
 
 
@@ -130,7 +130,7 @@ public class DataBaseConnect extends ConfigsDB {
     }
     public void getWasteAll(User user,ArrayList<Waste> list) throws SQLException, ClassNotFoundException {
         String select = "SELECT * FROM " + ConstWaste.WASTE_TABLE + " WHERE " +
-                ConstUsers.USERS_LOGIN + "=?";
+                ConstWaste.WASTE_LOGIN + "=?";
         ResultSet res = null;
         PreparedStatement sel = getDBConnect().prepareStatement(select);
         sel.setString(1,user.getLogin());

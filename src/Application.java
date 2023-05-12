@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
-        DataBaseConnect connect = new DataBaseConnect();
         Test();
     }
     public static void Test() throws SQLException, ClassNotFoundException {
@@ -29,7 +27,11 @@ public class Application {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
         }
+
 //        connect.addWaste(user,new Waste(2000,"spar", list.get(1)));
+//        connect.addWaste(user,new Waste(1000,"Лукойл заправка", list.get(4)));
+//        connect.addWaste(user,new Waste(5000,"кроссовки Adidas", list.get(0)));
+//        connect.addWaste(user,new Waste(2000,"Подарил маме цветы", list.get(10)));
         ArrayList<Waste> list1 = new ArrayList<>();
         connect.getWasteAll(user,list1);
         for (int i = 0; i < list1.size(); i++) {
